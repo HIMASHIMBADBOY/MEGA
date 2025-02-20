@@ -1,0 +1,6 @@
+i had a session bug , which was due to multiple starting sessions.
+i had empty input bug due to improper grabbing of data and spelling mistakes.
+i had memory allocation bug which was due to improper calling of methods that retrives data from the database.
+this program is really f*cked up till this stage i have learned alot.
+let me take this time to learn all the things that i have been through.
+handling admin logic is still an issue.
