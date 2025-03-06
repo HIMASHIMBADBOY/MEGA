@@ -9,13 +9,13 @@ require_once '../Config/functions.php';
 if(is_admin()){
     require_once '../Config/dbh.classes.php';
     require_once '../Models/Application.classes.php';
-    require_once '../Controllers/applicationManage-contr.classes.php';
+    require_once '../Controllers/statusApproval-contr.classes.php';
 
     
 
     try {
-        $applicationManager = new ApplicationManageContr(null, null, null, null);
-        $applications = $applicationManager->Applications();
+        $approvedapplicationManager = new statusApprovalContr(null, null, null, null, null);
+        $approved = $approvedapplicationManager->showApprovedApplications();
         
         // // Debugging output
         // echo '<pre>';
@@ -23,7 +23,7 @@ if(is_admin()){
         // echo '</pre>';
         
         // Pass the applications to the view
-        include '../Views/Admins/applications.view.php';
+        include '../Views/Admins/approvedApplications.view.php';
     } catch (Exception $e) {
         echo 'Error: ' . $e->getMessage();
     }

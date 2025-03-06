@@ -11,6 +11,15 @@ class Application extends Db {
         return $stmt->execute();
     }
 
+    protected function getApplications() {
+        // Fetch applications from the database
+        $sql = "SELECT * FROM applications";
+        $stmt = $this->connection()->prepare($sql);
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+        return $results;
+    }
+
     protected function getApplicationById($id) {
         $stmt = $this->connection()->prepare("SELECT * FROM applications WHERE id = :id");
         $stmt->bindParam(':id', $id);
@@ -19,10 +28,37 @@ class Application extends Db {
     }
 
     protected function updateApplicationStatus($id, $status) {
-        $stmt = $this->connection()->prepare("UPDATE applications SET status = :status WHERE id = :id");
-        $stmt->bindParam(':status', $status);
-        $stmt->bindParam(':id', $id);
-        return $stmt->execute();
+        $sql = "UPDATE applications SET application_status = ? WHERE id = ?;";
+        $stmt = $this->connection()->prepare($sql);
+        $params = array($status, $id); // Corrected the order of parameters
+        $stmt->execute($params);
+        return $stmt->rowCount() > 0;
     }
+
+    protected function getApplicationByApprovedStatus() {
+        $stmt = $this->connection()->prepare("SELECT user_id, field_id, application_status, resumee, cover_letter FROM applications WHERE application_status = 'Approved'; ");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    protected function getApplicationByRejectedStatus() {
+        $stmt = $this->connection()->prepare("SELECT user_id, field_id, application_status, resumee, cover_letter FROM applications WHERE application_status = 'Rejected'; ");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    protected function getApplicationResultById($user_id){
+        $query = "SELECT 
+        fields.field_name, applications.submission_date, applications.application_status
+        FROM applications
+        INNER JOIN fields
+        ON applications.field_id=fields.field_id
+        WHERE user_id= ?;";    
+        $stmt = $this->connection()->prepare($query);
+        $params= array($user_id);
+        $stmt->execute($params);
+        return $stmt->fetchAll();  
+    }
+
 }
 ?>

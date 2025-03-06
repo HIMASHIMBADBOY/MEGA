@@ -1,13 +1,13 @@
 <?php
 function is_admin(){
-    if (isset($_SESSION['role'] )&& $_SESSION['role'] == 'admin'){
+    if (isset($_SESSION['userrole'] )&& $_SESSION['userrole'] == 'admin'){
         return true;
     }
        return false;
 }
 
 function is_student(){
-    if (isset($_SESSION['role'] )&& $_SESSION['role'] == 'student'){
+    if (isset($_SESSION['userrole'] )&& $_SESSION['userrole'] == 'student'){
         return true;
     }
        return false;

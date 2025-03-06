@@ -26,13 +26,13 @@ class LoginContr extends Login {
     }
 
     protected function emptyInput() {
-        $result; 
-        if (empty($this->uid) || empty($this->pwd)) {
+        $result;
+        if (empty($this->uid) || empty($this->pwd)) { 
             $result = false;
         } else {
             $result = true;
         }
-        return $result; 
+        return $result;
     }
 
     protected function validateInput($uid, $pwd) {

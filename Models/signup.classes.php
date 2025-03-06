@@ -22,10 +22,10 @@ class Signup extends Db {
     }
 
  
-protected function checkUser($uid, $email){
-$stmt= $this->connection()->prepare('SELECT user_uid FROM users WHERE user_uid = ? OR user_email = ?;');
+protected function checkUser($uid){
+$stmt= $this->connection()->prepare('SELECT user_uid FROM users WHERE user_uid = ?;');
 #we put in the uid and the email as an array because we have more than one piece of data
-if(!$stmt->execute(array($uid, $email))){
+if(!$stmt->execute(array($uid))){
     #deleting the statement entirely if it fails to execute
     $stmt= null;
     #creating a header function that is going to senf the user back to the frontindex page with an error message 
@@ -36,10 +36,10 @@ if(!$stmt->execute(array($uid, $email))){
 
   $resultcheck;
 if( $stmt->rowcount() > 0){
-    $resultcheck = false;
+    $resultcheck = true;
 }else{
 
-    $resultcheck = true;
+    $resultcheck = false;
 }
  return $resultcheck;
 }

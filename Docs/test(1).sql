@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2025 at 07:16 AM
+-- Generation Time: Mar 07, 2025 at 12:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -37,13 +37,6 @@ CREATE TABLE `applications` (
   `cover_letter` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `applications`
---
-
-INSERT INTO `applications` (`id`, `user_id`, `field_id`, `application_status`, `submission_date`, `resumee`, `cover_letter`) VALUES
-(1, 14, 2, 'Pending', '2025-02-10 15:51:59', '../Uploads/CIT-2152-System-analysis-and-Design.doc.pdf', '../Uploads/CIT-3203-OBJECT-ORIENTED-PROGRAMMING-II.docx.pdf');
-
 -- --------------------------------------------------------
 
 --
@@ -58,20 +51,6 @@ CREATE TABLE `fields` (
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `fields`
---
-
-INSERT INTO `fields` (`field_id`, `field_name`, `description`, `location`, `created_at`) VALUES
-(1, 'CRDB BANK', 'we provide banking services', 'POSTA MPYA', '2025-01-26 00:28:16'),
-(2, 'NSSF', 'we provide bima services', 'POSTA YA ZAMANI', '2025-01-26 00:29:55'),
-(3, 'MUHIMBILI', 'The nationals hospital that provides various treatmensts and medical care', 'MUHIMBILI', '2025-01-26 01:48:18'),
-(4, 'FLY LOGISTICS', 'dealing with fowarding', 'TEGETA', '2025-01-27 07:00:51'),
-(5, 'segerea', 'tabata', 'mikocheni', '2025-02-02 03:44:41'),
-(6, 'TCRA', 'Dealing with communications', 'MWENGE', '2025-02-20 08:14:26'),
-(7, 'hbgtthj', 'gjs', 'jsj', '2025-02-20 08:23:48'),
-(8, 'ghg', 'hgfsh', 'hsfh', '2025-02-20 08:52:33');
-
 -- --------------------------------------------------------
 
 --
@@ -85,18 +64,6 @@ CREATE TABLE `profiles` (
   `profile_introText` text NOT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `profiles`
---
-
-INSERT INTO `profiles` (`profile_id`, `profile_about`, `profile_introTitle`, `profile_introText`, `user_id`) VALUES
-(1, 'yoooooooooo welcome!', 'i&#039;m', 'we finally made it', 10),
-(2, 'Get new knowledge , learn new skills worlds changing day by day', 'defaut', 'we are really exited to have you here this is your dashboard you can make any changes you want . feel free to give us feedback reports bebrilliant@gmail.com', 11),
-(3, 'Get new knowledge , learn new skills worlds changing day by day', 'hi babe gal', 'we are really exited to have you here this is your dashboard you can make any changes you want . feel free to give us feedback reports bebrilliant@gmail.com', 12),
-(4, 'Get new knowledge , learn new skills worlds changing day by day', 'Hello!hassani kanonge', 'we are really exited to have you here this is your dashboard you can make any changes you want . feel free to give us feedback reports bebrilliant@gmail.com', 13),
-(5, 'Get new knowledge , learn new skills worlds changing day by day', 'Hello!administrator', 'we are really exited to have you here this is your dashboard you can make any changes you want . feel free to give us feedback reports bebrilliant@gmail.com', 14),
-(6, 'Get new knowledge , learn new skills worlds changing day by day', 'Hello!kkkk', 'we are really exited to have you here this is your dashboard you can make any changes you want . feel free to give us feedback reports bebrilliant@gmail.com', 5);
 
 -- --------------------------------------------------------
 
@@ -117,10 +84,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_uid`, `user_email`, `user_pwd`, `user_role`) VALUES
-(14, 'jese', 'jese@gmail.com', '$2y$10$la2jv6QdxeOpmQJCFI1MdOJOVCkgsC8YcEOCGI0RH5VLpS6K2hCni', 'student'),
-(15, 'hassani', 'hassani@gmail.com', '$2y$10$HOK6T5PE1QNWS9UEv3Uw3Oryy8E0HhhIOux6pBPlW79IANa5snKPu', 'admin'),
-(16, 'ashura', 'ashura@gmail.com', '$2y$10$..sEnP6kiPoEjeVTodTAN.gH4jG1jNvfRb56g1QZoZj3srCigP7K2', 'admin'),
-(17, 'james', 'james@gmail.com', '$2y$10$0T7WiolZ3c1PAH3S4urPkOVnIisLI.Wm.TA2w6rkx5GxxSEasZFnq', 'admin');
+(1, 'krishna', 'krishna@gmail.com', '$2y$10$UTyEFGQ7Lo8QOC3.nRB0z.gZPqO3dZfVKhZ7SVcp5l5IK2S.mJSFS', 'admin'),
+(2, 'jumawaziri', 'juma@gmail.com', '$2y$10$4nmgPIxJvdY7p8OEC/5w7eYiE7.p2WaSYOzCc0IF3kEPMs0y9YUke', 'student'),
+(3, 'mkuu', 'mkuu@gmail.com', '$2y$10$wwwKO5D6pb9JvYznCmlGdO86tGPGOSUBpFxaAgd3viCHyJnv/RK9G', 'admin'),
+(4, 'ramadhani', 'ramadhani@gmail.com', '$2y$10$NU7UpNcfZxSqpbQXB5.vEOzisLdBaNTuodRcBC6xefYRIVhZpHS9W', 'admin'),
+(5, 'hosea', 'hosea@gmail.com', '$2y$10$bRpt/ZhXmg3X2ykfUucXguZ2Z3HflNvQvvTe2i4Ob33t4E1/xQILi', 'admin'),
+(6, 'msomi', 'msomi@gmail.com', '$2y$10$QxZuUMBixdNAIVeGDuErlOXxS7taVDnMvnOZ7jdk5utGzjmPZZRSm', 'student');
 
 --
 -- Indexes for dumped tables
@@ -165,25 +134,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `fields`
 --
 ALTER TABLE `fields`
-  MODIFY `field_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `field_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

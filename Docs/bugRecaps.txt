@@ -4,3 +4,5 @@ i had memory allocation bug which was due to improper calling of methods that re
 
 let me take this time to learn all the things that i have been through.
 handling admin logic is still an issue.
+
+had an issue when changing the status the new status didnot appear , it because of improper arrangement of parameter in the binding array that do not corresponds to  the placeholder.

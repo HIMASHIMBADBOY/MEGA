@@ -17,7 +17,7 @@ class ApplicationContr extends Application {
     public function Apply() {
         if ($this->emptyInput()) {
             
-            throw new Exception("All fields are required.");
+           throw new Exception("All fields are required.");
             
         }
 
@@ -31,5 +31,6 @@ class ApplicationContr extends Application {
     protected function emptyInput() {
         return empty($this->field_id) || empty($this->user_id) || empty($this->resume) || empty($this->cover_letter);
     }
+
 }
 ?>

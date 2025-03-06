@@ -1,21 +1,22 @@
 <?php
-// Start the session
 if(session_status() === PHP_SESSION_NONE){
     session_start();
 }
 
 require_once '../Config/functions.php';
 
-if(is_admin()){
+ $user_id = $_SESSION['userid'] ?? null; // user id is stored in the session 
+
+ if(is_student()){
     require_once '../Config/dbh.classes.php';
     require_once '../Models/Application.classes.php';
-    require_once '../Controllers/applicationManage-contr.classes.php';
+    require_once '../Controllers/applicationResults-contr.classes.php';
 
     
 
     try {
-        $applicationManager = new ApplicationManageContr(null, null, null, null);
-        $applications = $applicationManager->Applications();
+        $result_contr = new ApplicationResultContr(null, null, null);
+        $result = $result_contr->getResultByid($user_id);
         
         // // Debugging output
         // echo '<pre>';
@@ -23,10 +24,9 @@ if(is_admin()){
         // echo '</pre>';
         
         // Pass the applications to the view
-        include '../Views/Admins/applications.view.php';
+        include '../Views/Students/ApplicationResult.view.php';
     } catch (Exception $e) {
         echo 'Error: ' . $e->getMessage();
     }
 
 }
-

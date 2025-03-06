@@ -22,7 +22,7 @@ $login->LoginUser();
 //sending back the user to the dashboard page
 
 if($_SESSION['userrole']==='admin'){
-    redirect("Admin.inc.php");
+    redirect("../Views/Admins/dashboard.view.php");
  }else{
      redirect("Student.inc.php");
  }
