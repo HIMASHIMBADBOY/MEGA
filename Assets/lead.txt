@@ -1,0 +1,15 @@
+how to view the documents inside the web browser
+1.initialize a button var that will link to the button on the html to view the resume or cover letter
+2.create an event lister for a click event on the button
+3.create a function that will handle opening the file in the browser.
+
+------------------------
+before acception i should add a the cover and resume to manage applications
+1.make the visibility of student name, field name
+2.create a button to select a paricular application
+3.button will hold the application id, name, and email of the student.
+4.create a feedback column that will have the select button
+5.give the button id then add an event lister on the button on the javascript side . the event listener will listern for the click function 
+6. on admin side use the email and to send the feeback to the user
+
+onclick="selectApplication('<?php echo htmlspecialchars($application['application_id'] ?? ''); ?>','<?php echo htmlspecialchars($application['user_uid'] ?? ''); ?>', '?php echo htmlspecialchars($application['user_email'] ?? ''); ?>' )"

@@ -1,0 +1,9 @@
+* text=auto
+/vendor/* -text
+/vendors/* -text
+/vendor/* binary
+/vendors/* binary
+vendor/* -text
+vendors/* -text
+vendor/* binary
+vendors/* binary

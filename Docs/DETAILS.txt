@@ -1,0 +1,118 @@
+1. System Roles & Features
+A. Student
+
+    Profile Management
+
+        Select department (e.g., Medicine, Engineering).
+
+        Upload valid ID (e.g., student ID/passport) and academic documents.
+
+    Field Browsing & Application
+
+        Filter fields by:
+
+            Department
+
+            Location
+
+            Field name
+
+            Deadline
+
+        One-time application per field (prevent duplicates).
+
+    Communication
+
+        Direct email to:
+
+            Field Supervisor
+
+            Academic Supervisor (Student Supervisor).
+
+    Attendance Tracking
+
+        Submit daily attendance via mobile/web form.
+
+B. Admin (Field HR)
+
+    Field Management
+
+        Post/update fields with:
+
+            Title, description, department, location.
+
+            Capacity (auto-updates as students are approved).
+
+            Deadlines.
+
+    Application Workflow
+
+        Approve/reject applications.
+
+        Auto-assign Field Supervisor based on student’s department.
+
+    Dashboard
+
+        Real-time space availability.
+
+        Deadline alerts.
+
+C. Student Supervisor (Academic)
+
+    Monitoring
+
+        Track student arrival/attendance.
+
+        View student details:
+
+            Department
+
+            Assigned Field Supervisor (contact: email/phone).
+
+    Document Management
+
+        Send paperwork (e.g., evaluation forms) to:
+
+            Students
+
+            Field Supervisors.
+
+    Notifications
+
+        Email/SMS alerts for:
+
+            Absent students.
+
+            Field Supervisor reports.
+
+D. Field Supervisor
+
+    Student Management
+
+        View assigned students’ profiles.
+
+        Verify attendance.
+
+    Reporting
+
+        Submit performance evaluations.
+
+2. Missing Features Added
+System-Wide
+
+    Deadline Alerts (Email/SMS reminders for students/admins).
+
+    Document Validation (Auto-check for valid ID formats).
+
+    Duplicate Application Prevention (Block re-application to the same field).
+
+    Audit Logs (Track all user actions for security).
+
+Student Supervisor
+
+    Attendance Analytics (Charts showing student punctuality).
+
+Admin
+
+    Bulk Import/Export (For fields, applications, or supervisors).
+

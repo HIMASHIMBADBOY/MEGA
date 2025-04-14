@@ -1,0 +1,49 @@
+
+body{
+    
+    font-family:'Poppins', sans-serif;
+    background:  white;
+    background-repeat: no-repeat;
+    background-image: url("/images/WhatsApp Image 2024-11-23 at 00.36.04(1).jpeg");
+    background-attachment: fixed;
+
+}
+
+#img-logo{
+    width: 70px;
+    margin: 2px 3px;
+    box-sizing: border-box;
+    border-radius: 70%;
+}    
+
+/* login container*/
+.box-area{
+    width: 930px;
+  
+}
+
+
+
+/* right box*/
+
+#btn-g:hover{
+    background-color: lightgrey;
+  }
+  
+
+
+/*left box*/
+#rt-img{
+    box-sizing: border-box;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.30), 0 11px 8px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
+    filter: blur(0.5px);
+}
+#lft-box{
+    background-color: #fff;
+    
+}
+
+
+
+/* login container*/

@@ -1,0 +1,80 @@
+i had a session bug , which was due to multiple starting sessions.
+i had empty input bug due to improper grabbing of data and spelling mistakes.
+i had memory allocation bug which was due to improper calling of methods that retrives data from the database.
+
+let me take this time to learn all the things that i have been through.
+handling admin logic is still an issue.
+
+had an issue when changing the status the new status didnot appear , it because of improper arrangement of parameter in the binding array that do not corresponds to  the placeholder.
+i got a serious trouble on the process of making the student to be able to view the feedback , and it was because i was enganging two queries the adding them as a one array then looping them.
+### Problem Encountered
+
+The issue was that the `field_name` was not being correctly merged into the `$result` array at the same level. Instead, it was being added as a nested array, which caused it not to be displayed correctly in the view.
+
+### Causes
+
+1. **Incorrect Array Merging**: The `field_name` was being fetched and added to the `$result` array as a nested array instead of being merged at the same level.
+2. **Fetching All Results**: The `fetchAll` method was used, which returns an array of arrays, causing the `field_name` to be nested.
+
+### Solution
+
+To solve this issue, we needed to ensure that the `field_name` is correctly merged into the `$row` array at the same level. This was achieved by using the `fetch` method instead of `fetchAll` and directly assigning the `field_name` to the `$row` array.
+
+### Updated Code
+
+Here is the updated `getFeedback` method in feedback.classes.php:
+
+```php
+<?php
+require_once "../config/dbh.classes.php";
+
+class feedback extends Db {
+
+    protected function getFeedback($user_id) {
+        $sql = "SELECT feedbacks.message, feedbacks.confirmation_letter, applications.field_id 
+                FROM feedbacks 
+                JOIN applications ON feedbacks.application_id = applications.id
+                WHERE applications.user_id = ?;";
+        $stmt = $this->connection()->prepare($sql);
+        $params = array($user_id);
+        $stmt->execute($params);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $combinedResults = [];
+        if ($result) {
+            foreach ($result as $row) {
+                $query = "SELECT field_name FROM fields WHERE field_id = :field_id";
+                $stm = $this->connection()->prepare($query);
+                $stm->bindParam(':field_id', $row['field_id']);
+                $stm->execute();
+                $res = $stm->fetch(PDO::FETCH_ASSOC);
+                
+                if ($res) {
+                    $row['field_name'] = $res['field_name']; // Add field_name to the row
+                }
+                $combinedResults[] = $row;
+            }
+        }
+
+        return $combinedResults;
+    }
+}
+```
+
+### Explanation
+
+1. **Fetching Field Name**: The `fetch` method is used to fetch a single row, ensuring that the `field_name` is not nested.
+2. **Merging Field Name**: The `field_name` is directly assigned to the `$row` array, ensuring it is at the same level as other elements.
+3. **Combining Results**: The `$row` array, now containing the `field_name`, is added to the `$combinedResults` array.
+
+### Verification
+
+To verify the solution, the following steps were taken:
+
+1. **Submit an Application**: Navigate to the application form, fill it out, and submit it.
+2. **Check Debug Output**: Debug statements were added to verify that the `field_name` was correctly merged and passed to the view.
+3. **Display Notifications**: The notifications page was checked to ensure that the `field_name` was displayed correctly.
+
+### Conclusion
+
+By correctly merging the `field_name` into the `$row` array at the same level, the issue was resolved, and the `field_name` is now displayed correctly in the notifications view.
